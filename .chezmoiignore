@@ -1,0 +1,29 @@
+# 忽略所有插件下载目录
+.vim/bundle/
+.vim/plugged/
+.vim/pack/
+
+# 唯独不忽略你修改过的那个文件
+# !.vim/plugged/leaderf/leadf.vim
+
+# 忽略撤销记录和备份文件
+.vim/undo/
+.vim/swap/
+# .vim/backup/
+
+# 忽略 LSP 产生的临时文件
+.vim/.lsp/
+
+docs/distroprefs/
+
+{{ if ne .chezmoi.os "windows" }}
+scoop/**
+.config/scoop/**
+.whim
+Documents/windows_terminal_settings.json
+Documents/Microsoft.PowerShell_profile.ps1
+Documents/Exported-2024-11-24.vssettings
+{{ end }}
+
+.config/yazi-alt/plugins
+.config/yazi-alt/yazi.config

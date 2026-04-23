@@ -1,0 +1,60 @@
+{{- /* 初始化 osid */ -}}
+{{- $osid := .chezmoi.os -}}
+
+{{- /* 默认 destDir */ -}}
+{{- $destDir := .chezmoi.homeDir -}}
+
+{{- $msystem := env "MSYSTEM" | default "" -}}
+{{- $home := env "HOME" -}}
+
+{{- /* Windows 原生：使用 rawHomeDir */ -}}
+{{- if eq .chezmoi.os "windows" -}}
+{{- /*  if not (contains "msys" .chezmoi.kernel.name | lower) */ -}}
+destDir: "{{ replace "\\" "/" .chezmoi.rawHomeDir }}"
+  {{- /* 检查是否在 MSYS2/Git Bash 环境中 */ -}}
+
+  {{- /* if and ($msystem) (hasPrefix $home "/") */ -}}
+  {{- if $msystem -}}
+    {{- /* 真正的 MSYS2 环境：有 MSYSTEM 且 HOME 是 POSIX 路径 */ -}}
+    {{- $osid = "msys2" -}}
+  {{- else -}}
+    {{- /* 原生 Windows（PowerShell/CMD） */ -}}
+    {{- $osid = "windows-native" -}}
+# destDir: "{{ .chezmoi.homeDir }}"
+  {{- end -}}
+{{- /* WSL：可选特殊处理 */ -}}
+{{- else if and (eq .chezmoi.os "linux") (contains "microsoft" .chezmoi.kernel.release | lower) -}}
+destDir: "/mnt/c/Users/{{ .chezmoi.username | splitList "\\" | last }}"
+
+{{- /* macOS / Linux 原生 */ -}}
+{{- else -}}
+destDir: "{{ .chezmoi.homeDir }}"
+{{- end }}
+
+{{- $is_msys := false -}}
+{{- if and (eq .chezmoi.os "windows") (env "MSYSTEM") -}}
+{{-   $is_msys = true -}}
+{{- end -}}
+
+{{ if $is_msys }}
+interpreters:
+  sh:
+    command: "bash"
+  ps1:
+    command: "pwsh"
+    args: ["-NoLogo", "-File"]
+edit:
+  command: vim
+{{ end }}
+
+# 其他通用配置
+# sourceDir: "~/.local/share/chezmoi"
+
+# === 注入来自 .chezmoi.yaml.tmpl 的数据 ===
+# 使用说明: chezmoi init -D /c/Users/Administrator -a --source /c/Users/Administrator/.local/share/chezmoi
+data:
+  destDir: {{ .destDir | quote }}
+  msystem: {{ $msystem | quote }}
+  is_msys: {{ $is_msys }}
+  osid: {{ $osid | quote }}
+  mHome: {{ $home | quote }}

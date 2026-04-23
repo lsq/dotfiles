@@ -1,0 +1,64 @@
+theme: 0
+showNewVersionIcon: false
+hideAfterStartup: false
+randomControllerPort: false
+runTimeFormat: "hh : mm : ss"
+trayOrders:
+  - - icon
+  - - status
+    - traffic
+    - text
+hideTrayIcon: false
+connShowProcess: true
+showTrayProxyDelayIndicator: true
+systemProxyTypeIndex: 0
+trayScriptManualRunTime: 1693640840000
+checkForUpdates: false
+shortcutSystemProxy: Control+Alt+d
+profileParsersText: >-
+  
+  parsers: # arrayy
+    #- url: https://gh-proxy.com/https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml
+      #yaml: #https://web.archive.org/web/20230319100701/https://docs.cfw.lbyczf.com/contents/parser.html#%E7%AE%80%E4%BE%BF%E6%96%B9%E6%B3%95-yaml
+        #prepend-proxies:
+        #  - name: new-pac #https://hgithub.xyz/Alvin9999/new-pac/wiki
+        #    type: ss
+        #    server: 92.118.205.61
+        #    port: 22222
+        #    cipher: aes-256-gcm
+        #    password: dongtaiwang.com
+        #prepend-proxy-groups:
+        #  - name: 🚀 new-pac代理
+        #    proxies:
+        #      - new-pac
+        #    type: select
+        #mix-object:
+        #  proxy-groups:
+        #    - name: 🚀 选择代理
+        #      proxies:
+        #        - ♻ 自动选择
+        #        - 🔰 延迟最低
+        #        - ✅ 手动选择
+        #        - 🗺️ 选择地区
+        #        - new-pac
+        #      type: select
+      #code: |
+      #  module.exports.parse = async (raw, { axios, yaml, notify, console }, { name, url, interval, selected }) => {
+      #    const obj = yaml.parse(raw)
+      #    //console.log(obj['proxy-groups'][0]['proxies'])
+      #    //const free_pac = 'https://dgithub.xyz/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7'
+      #    const free_pac = 'https://fan2.194529.xyz/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/'
+      #    let {data, status} =  await axios.get(free_pac)
+      #    console.log(data)
+      #    //axios.get(free_pac).then(function(res) {console.log(res)}).catch(function(err){console.log(err)})
+      #    obj['proxy-groups'][0]['proxies'].push('new-pac')
+      #    return yaml.stringify(obj)
+      #  }
+    - url: https://gh-proxy.com/https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml
+      file: "D:/tmp/node.js/axios-example/parse.js"
+    - url: file:///d:/tmp/node.js/axios-example/t_modified.yaml
+      file: "D:/tmp/node.js/axios-example/parse.js"
+editor: 0
+mixinType: 0
+editProfileWithCFWEditor: true
+randomMixedPort: false

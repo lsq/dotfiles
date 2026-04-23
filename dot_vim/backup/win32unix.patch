@@ -1,0 +1,26 @@
+diff --git a/autoload/coc/util.vim b/autoload/coc/util.vim
+index 8fd1421..e217eaf 100644
+--- a/autoload/coc/util.vim
++++ b/autoload/coc/util.vim
+@@ -608,7 +608,8 @@ endfunction
+ " /home/YourName => /c/User/YourName
+ function! coc#util#fix_home(filepath) abort
+   if s:win32unix_fix_home && strpart(a:filepath, 0, 6) ==# '/home/'
+-    return substitute(a:filepath, '^/home', '/c/User', '')
++    let winpath = system('cygpath -m ' .. a:filepath)->trim()
++    return substitute(winpath, '\([^\/]\+\):/', '/\L\1\E/', '')
+   endif
+   return a:filepath
+ endfunction
+diff --git a/build/index.js b/build/index.js
+index 1bc0bbd..8b345c7 100644
+--- a/build/index.js
++++ b/build/index.js
+@@ -124612,6 +124612,7 @@ var init_sources2 = __esm({
+         let { nvim } = this;
+         try {
+           let name2 = path.basename(filepath, ".vim");
++          // await nvim.command(`source ${filepath.replace(/\\/g,'/')}`);
+           await nvim.command(`source ${filepath}`);
+           let fns = await nvim.call("coc#_remote_fns", name2);
+           let lowercased = fns.map((fn) => fn[0].toLowerCase() + fn.slice(1));

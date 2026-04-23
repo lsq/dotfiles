@@ -1,0 +1,9 @@
+registry=https://mirrors.cloud.tencent.com/npm/
+proxy=http://127.0.0.1:7890
+https-proxy=http://127.0.0.1:7890
+; coc.nvim:registry=https://registry.npmmirror.com\
+coc.nvim:registry=https://mirrors.cloud.tencent.com/npm/
+{{- if and (eq .chezmoi.os "windows") (.is_msys) }}
+script-shell=C:\msys64\usr\bin\bash.exe
+shell=C:\msys64\usr\bin\bash.exe
+{{- end }}

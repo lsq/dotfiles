@@ -1,0 +1,74 @@
+version: 2
+#log-file: c:/Users/Administrator/.config/efm-langserver/output.log
+#log-file: /home/lsq/.config/efm-langserver/output.log
+log-level: 1
+root-markers:
+  - .git/
+lint-debounce: 1s
+commands:
+  - command: notepad
+    arguments:
+      - ${INPUT}
+    title: test
+tools:
+  markdown: &markdown
+    lint-command: 'markdownlint -s'
+    lint-stdin: true
+    lint-after-open: true
+    lint-formats:
+      - '%f:%l %m'
+      - '%f:%l:%c %m'
+      - '%f: %l: %m'
+
+  sh-shellcheck: &sh-shellcheck
+    lint-command: 'shellcheck -f gcc -x'
+    lint-source: 'shellcheck'
+    lint-after-open: true
+    lint-formats:
+      - '%f:%l:%c: %trror: %m'
+      - '%f:%l:%c: %tarning: %m'
+      - '%f:%l:%c: %tote: %m'
+
+  sh-shfmt: &sh-shfmt
+    format-command: 'shfmt -ci -s -bn'
+    format-stdin: true
+
+  vim: &vim
+    lint-command: 'vint -'
+    lint-stdin: true
+    lint-after-open: true
+    lint-formats:
+      - '%f:%l:%c: %m'
+
+  json-jq: &json-jq
+    lint-command: 'jq .'
+    lint-after-open: true
+
+  python-black: &python-black
+    format-command: 'black --quiet -'
+    format-stdin: true
+
+  yaml-yamllint: &yaml-yamllint
+    lint-command: 'yamllint -f parsable -'
+    lint-after-open: true
+    lint-stdin: true
+
+languages:
+  markdown:
+    - <<: *markdown
+
+  vim:
+    - <<: *vim
+
+  yaml:
+    - <<: *yaml-yamllint
+
+  json:
+    - <<: *json-jq
+
+  python:
+    - <<: *python-black
+
+  sh:
+    - <<: *sh-shellcheck
+    - <<: *sh-shfmt

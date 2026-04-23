@@ -1,0 +1,15 @@
+{{- if and (eq .chezmoi.os "windows") (.is_msys) -}}
+# MinTTY configuration for Windows (MSYS2/Cygwin)
+ThemeFile=dracula
+Locale=zh_CN
+Charset=UTF-8
+Language=@
+Font=Consolas NF + LXGW WenKai Mono
+FontHeight=12
+DimAsFont=yes
+FontSmoothing=full
+BoldAsFont=yes
+BoldAsColour=yes
+AllowBlinking=no
+Term=xterm-256color
+{{- end -}}

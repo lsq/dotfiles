@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "C:\msys64\ucrt64\bin\aria2c.exe --conf-path=aria2.conf --enable-rpc --rpc-allow-origin-all",0

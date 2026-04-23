@@ -1,0 +1,72 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "=de53d90"
+hash = "5c7ec1afb87b79faf638a4dcc348ddb6"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "1099409"
+hash = "77e78e16578e8f5a37475c04d8324619"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "cfb9140"
+hash = "b5067143415bd2d46c0dfa57319ddcef"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "eaf6920"
+hash = "e218acb81244ecc0dc37f58b72c69eef"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "eaf6920"
+hash = "1a3396ccbc70b3c5f7d756eacc2b1f4a"
+
+[[plugin.deps]]
+use = "imsi32/yatline"
+rev = "88bd1c5"
+hash = "981acbe9b758b1af3a8154c932bb936d"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "eaf6920"
+hash = "186268c7330a1b3fea221aeed4d4f2f9"
+
+[[plugin.deps]]
+use = "AnirudhG07/plugins-yazi:copy-file-contents"
+rev = "71545f4"
+hash = "f8530ee84fee95dbcc26bb1d8d8019c7"
+
+[[plugin.deps]]
+use = "orhnk/system-clipboard"
+rev = "888026c"
+hash = "9f82a544335a53d79e87ea315746caaa"
+
+[[plugin.deps]]
+use = "aresler/path-from-root"
+rev = "c4f03df"
+hash = "5022fdb08fcb05c10eb59b63663edb10"
+
+[[plugin.deps]]
+use = "KKV9/compress"
+rev = "c264639"
+hash = "e17c11b605d989568a1d1741ca17c584"
+
+[[plugin.deps]]
+use = "Deepak22903/kdeconnect-send"
+rev = "7d9098d"
+hash = "498bda3e06d793f79fe1df7b28fc14a1"
+
+[[plugin.deps]]
+use = "dedukun/bookmarks"
+rev = "9ef1254"
+hash = "92fbb5483657fa7976cdf4e0104e18e0"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:diff"
+rev = "eaf6920"
+hash = "80d86c3f9a0191b16ac08fba3251d88a"
+
+[flavor]
+deps = []

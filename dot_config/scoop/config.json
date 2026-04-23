@@ -1,0 +1,13 @@
+{
+  "last_update": "2026-04-24T22:12:02.9196649+08:00",
+  "scoop_repo": "https://github.com/ScoopInstaller/Scoop",
+  "scoop_branch": "master",
+  "aria2-min-split-size": "4M",
+  "aria2-retry-wait": "4",
+  "aria2-split": "16",
+  "aria2-max-connection-per-server": "16",
+  "aria2-options": "--all-proxy=\"\"",
+  "use_sqlite_cache": true,
+  "root_path": "C:\\Users\\Administrator\\scoop",
+  "abgox-abyss-bucket-name": "abyss"
+}

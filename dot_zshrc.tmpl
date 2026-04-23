@@ -1,0 +1,325 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+#plugins=(git zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting zsh-autosuggestions)
+#plugins=(git zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting)
+# plugins=(git zsh-autocomplete  zsh-syntax-highlighting)
+plugins=(
+    git 
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    # zsh-comletions
+    zsh-autocomplete
+    )
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+#EDITOR=nano
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+export EDITOR='vim'
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+{{- if eq .chezmoi.os "windows" }}
+# complete hard drives in msys2
+drives=$(mount | sed -rn 's#^[A-Z]: on /([a-z]).*#\1#p' | tr '\n' ' ')
+zstyle ':completion:*' fake-files /: "/:$drives"
+unset drives
+PATH="$PATH:~/.local/bin:/c/users/Administrator/scoop/persist/rustup/.cargo/bin:/c/Users/Administrator/scoop/shims:/c/Users/Administrator/go/bin:/c/ProgramData/chocolatey/bin:/usr/bin:/ucrt64/bin:/c/Program Files/PowerShell/7-preview:/c/Users/Administrator/.local/bin"
+# for uru
+PATH="$PATH:/c/Users/Administrator/scoop/apps/uru/current:/c/Users/Administrator/.cache/pnpm/bin:/c/texlive/2026/bin/windows"
+eval "$(uru_rt admin install)"
+# Wrapper for chezmoi to convert ~/ to Windows path only for 'chezmoi edit'
+chezmoi() {
+    if [[ $# -ge 1 && "$1" == "edit" ]]; then
+        # 获取当前用户的 Windows 风格主目录（适用于 MSYS2/Git Bash on Windows）
+        local win_home
+        if [[ -n "$HOME" ]]; then
+            # 将 $HOME 从 /home/Administrator 或 /c/Users/Administrator 转换为统一的 /c/Users/Administrator
+            # 使用 cygpath（如果可用）或手动转换
+            # if command -v cygpath &>/dev/null; then
+            # win_home=$(cygpath -u "$(cygpath -w "$HOME")")
+                # 手动处理常见情况
+                if [[ "$HOME" == /c/Users/* ]]; then
+                    win_home="$HOME"
+                elif [[ "$HOME" == /home/* ]]; then
+                    # 假设用户名是 ${HOME#/home/}
+                    local user="${HOME#/home/}"
+                    win_home="/c/Users/$user"
+                else
+                    # fallback: assume standard Windows path
+                    win_home="/c/Users/Administrator"
+                fi
+        else
+            win_home="/c/Users/Administrator"
+        fi
+
+        # 构造新参数：将所有以 ~/ 开头的参数替换为 $win_home/
+        local new_args=()
+        for arg in "$@"; do
+            if [[ "$arg" == "~/"* ]]; then
+                new_args+=("${win_home}/${arg#"~/"}")
+            elif [[ "$arg" == "~" ]]; then
+                new_args+=("$win_home")
+            else
+                new_args+=("$arg")
+            fi
+        done
+
+        # 调用原始 chezmoi 命令
+        command chezmoi "${new_args[@]}"
+    else
+        # 非 edit 子命令，直接透传
+        command chezmoi "$@"
+    fi
+}
+{{- end }}
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+eval "$(atuin init zsh)"
+
+:<<-!
+[ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
+!
+
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+man() {
+    env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+        man "$@"
+}
+setGitProxy() {
+    if [[ "$1" == "on" ]]; then
+        sed -i "/^#\[http/{N;s/#//g;}" ~/.gitconfig
+    elif [[ "$1" == "off" ]]; then
+        sed -i "/^\[http/{N;s/^/#/gm;}" ~/.gitconfig
+    fi
+    git config list
+}
+
+gtkCompileFlags() {
+    pkg-config --cflags gtk4 |sed 's/ /\n/gw compile_flags.txt'
+}
+#export LANG=zh_CN.UTF-8
+#export LANGUAGE=zh_CN.UTF-8
+export PYTHONIOENCODING=utf-8
+#chcp.com 65001
+# 设置xterm-256color终端类型
+# export TERM=xterm-256color
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+
+# dgt - A wrapper for 'dgit' to clone/download git repositories via proxy
+# Usage: dgt <repo> <dest_dir>
+# Example: dgt https://github.com/user/repo.git ./my-repo
+dgt() {
+    local repo=""
+    local dest=""
+    local proxy="https://gh-proxy.com"
+    local log_prefix="log: "
+
+    # 显示帮助信息
+    show_help() {
+        cat <<EOF
+Usage: dgt <repository-url> <destination-directory>
+
+Download or clone a Git repository using 'dgit' with built-in proxy and logging.
+
+Arguments:
+  <repository-url>        The URL of the Git repository (e.g., https://github.com/...)
+  <destination-directory> The local path where the repo will be cloned/downloaded
+
+Options:
+  --help, -h              Show this help message and exit
+
+Environment:
+  DGT_PROXY               Override default proxy (default: https://gh-proxy.com)
+
+Examples:
+  dgt https://github.com/torvalds/linux.git ./linux
+  DGT_PROXY=https://mirror.example.com dgt https://github.com/user/repo.git ./repo
+
+Note:
+  This function requires 'dgit' to be installed and available in PATH.
+EOF
+    }
+
+    # 检查 dgit 是否存在
+    if ! command -v dgit &> /dev/null; then
+        echo "Error: 'dgit' is not installed or not found in PATH." >&2
+        echo "Please install 'dgit' first." >&2
+        return 1
+    fi
+
+    # 解析参数
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -h|--help)
+                show_help
+                return 0
+                ;;
+            *)
+                if [[ -z "$repo" ]]; then
+                    repo="$1"
+                elif [[ -z "$dest" ]]; then
+                    dest="$1"
+                else
+                    echo "Error: Unexpected extra argument: '$1'" >&2
+                    echo "Run 'dgt --help' for usage." >&2
+                    return 1
+                fi
+                shift
+                ;;
+        esac
+    done
+
+    # 检查必需参数
+    if [[ -z "$repo" ]]; then
+        echo "Error: Missing repository URL." >&2
+        echo "Run 'dgt --help' for usage." >&2
+        return 1
+    fi
+
+    if [[ -z "$dest" ]]; then
+        echo "Error: Missing destination directory." >&2
+        echo "Run 'dgt --help' for usage." >&2
+        return 1
+    fi
+
+    # 允许通过环境变量覆盖代理
+    if [[ -n "${DGT_PROXY:-}" ]]; then
+        proxy="$DGT_PROXY"
+    fi
+
+    # 检查目标目录是否已存在
+    if [[ -e "$dest" ]]; then
+        echo "Error: Destination '$dest' already exists." >&2
+        return 1
+    fi
+
+    # 执行 dgit 命令
+    echo "Cloning '$repo' into '$dest' via proxy '$proxy'..."
+    if dgit d "$repo" -d "$dest" --log --log-prefix="$log_prefix" --proxy "$proxy" --exact-match; then
+        echo "Success: Repository cloned to '$dest'."
+        return 0
+    else
+        echo "Error: dgit command failed." >&2
+        return 1
+    fi
+}

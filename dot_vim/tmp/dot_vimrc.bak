@@ -1,0 +1,8 @@
+redir! > vrc.txt
+"let hh=expand('~')
+let hp=expand($HOMEPATH)
+"echo hh
+"echo hp
+exec 'source ' . hp . "/github/vim-init/init.vim"
+"exec 'source c:' . hp . "/github/vim-init/init.vim"
+redir end

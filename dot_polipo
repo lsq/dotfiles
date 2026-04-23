@@ -1,0 +1,4 @@
+socksParentProxy="127.0.0.1:10808"
+socksProxyType="socks5"
+proxyAddress="127.0.0.1"
+proxyPort=8123

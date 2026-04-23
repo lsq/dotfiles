@@ -1,0 +1,341 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": 
+    [
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "id": "User.copy.644BA8F2"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878"
+        }
+    ],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{17da3cac-b318-431e-8a3e-7fcdefe6d114}",
+    "firstWindowPreference": "persistedWindowLayout",
+    "keybindings": 
+    [
+        {
+            "id": "User.copy.644BA8F2",
+            "keys": "ctrl+shift+c"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+5"
+        },
+        {
+            "id": "User.paste",
+            "keys": "ctrl+shift+v"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+8"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+1"
+        },
+        {
+            "id": "Terminal.SwitchToTab5",
+            "keys": "alt+6"
+        },
+        {
+            "id": "Terminal.SwitchToTab0",
+            "keys": "alt+1"
+        },
+        {
+            "id": "Terminal.SwitchToTab1",
+            "keys": "alt+2"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+2"
+        },
+        {
+            "id": "Terminal.SwitchToTab2",
+            "keys": "alt+3"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+3"
+        },
+        {
+            "id": "Terminal.SwitchToTab3",
+            "keys": "alt+4"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+4"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+7"
+        },
+        {
+            "id": "Terminal.SwitchToTab4",
+            "keys": "alt+5"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+6"
+        },
+        {
+            "id": "Terminal.SwitchToTab6",
+            "keys": "alt+7"
+        },
+        {
+            "id": "Terminal.SwitchToTab7",
+            "keys": "alt+8"
+        }
+    ],
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "colorScheme": "Dracula",
+            "font": 
+            {
+                "face": "ConsolasLXGWWenKaiNFM"
+            }
+        },
+        "list": 
+        [
+            {
+                "colorScheme": "DraculaPlus",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "font": 
+                {
+                    "face": "Consolas NF + LXGW WenKai Mono"
+                },
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell",
+                "opacity": 100,
+                "useAcrylic": true
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
+            },
+            {
+                "colorScheme": "Dracula",
+                "commandline": "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -ucrt64 -shell zsh",
+                "cursorColor": "#50FA7B",
+                "cursorShape": "vintage",
+                "experimental.retroTerminalEffect": false,
+                "font": 
+                {
+                    "face": "ConsolasLXGWWenKaiNFM",
+                    "size": 12
+                },
+                "guid": "{17da3cac-b318-431e-8a3e-7fcdefe6d114}",
+                "icon": "C:\\msys64\\ucrt64.ico",
+                "name": "UCRT64 / MSYS2",
+                "opacity": 100,
+                "startingDirectory": "C:\\msys64\\home\\%USERNAME%",
+                "useAcrylic": true
+            },
+            {
+                "colorScheme": "One Half Dark",
+                "commandline": "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -mingw64 -shell zsh",
+                "font": 
+                {
+                    "face": "ConsolasLXGWWenKaiNFM",
+                    "size": 12
+                },
+                "guid": "{71160544-14d8-4194-af25-d05feeac7233}",
+                "icon": "C:\\msys64\\msys2.ico",
+                "name": "MINGW64 / MSYS2",
+                "startingDirectory": "C:\\msys64\\home\\%USERNAME%"
+            },
+            {
+                "colorScheme": "Dracula",
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -msys -shell zsh",
+                "cursorColor": "#50FA7B",
+                "cursorShape": "vintage",
+                "font": 
+                {
+                    "face": "ConsolasLXGWWenKaiNFM",
+                    "size": 12
+                },
+                "guid": "{81160544-14d8-4194-af25-d05feeac7233}",
+                "icon": "C:/msys64/msys2.ico",
+                "name": "MSYS / MSYS2",
+                "startingDirectory": "C:/msys64/home/%USERNAME%",
+                "useAcrylic": false
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{fda0cab9-be89-5d00-8a1d-74ad1e7e7c11}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{70ede3eb-e046-51bb-ba1d-dfd20be0ec6f}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "colorScheme": "Dracula",
+                "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
+                "cursorColor": "#50FA7B",
+                "cursorShape": "vintage",
+                "font": 
+                {
+                    "face": "ConsolasLXGWWenKaiNFM"
+                },
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "historySize": 10000,
+                "icon": "ms-appx:///ProfileIcons/pwsh-preview.png",
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "commandline": "C:\\Program Files\\PowerShell\\7\\pwsh.exe -NoExit -Command \"&{Import-Module \"\"\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell 7133e947 -SkipAutomaticLocation -DevCmdArguments \"\"\"-arch=x64 -host_arch=x64\"\"\"}\"",
+                "guid": "{664b36e5-e19f-4f7f-a109-215c0447913b}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/vs-pwsh.png",
+                "name": "Developer Pwsh  for VS 2022",
+                "startingDirectory": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community"
+            },
+            {
+                "colorScheme": "Dracula",
+                "commandline": "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -clang64 -shell zsh",
+                "cursorColor": "#50FA7B",
+                "cursorShape": "vintage",
+                "experimental.retroTerminalEffect": false,
+                "font": 
+                {
+                    "face": "ConsolasLXGWWenKaiNFM",
+                    "size": 12
+                },
+                "guid": "{175a4780-b9df-4500-9589-8fae483bdf57}",
+                "hidden": false,
+                "icon": "C:\\msys64\\clang64.ico",
+                "name": "Clang64 / MSYS2",
+                "opacity": 100,
+                "startingDirectory": "C:\\msys64\\home\\%USERNAME%",
+                "useAcrylic": true
+            }
+        ]
+    },
+    "schemes": 
+    [
+        {
+            "background": "#1E1F29",
+            "black": "#000000",
+            "blue": "#BD93F9",
+            "brightBlack": "#555555",
+            "brightBlue": "#BD93F9",
+            "brightCyan": "#8BE9FD",
+            "brightGreen": "#50FA7B",
+            "brightPurple": "#FF79C6",
+            "brightRed": "#FF5555",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#F1FA8C",
+            "cursorColor": "#BBBBBB",
+            "cyan": "#8BE9FD",
+            "foreground": "#F8F8F2",
+            "green": "#50FA7B",
+            "name": "Dracula",
+            "purple": "#FF79C6",
+            "red": "#FF5555",
+            "selectionBackground": "#44475A",
+            "white": "#BBBBBB",
+            "yellow": "#F1FA8C"
+        },
+        {
+            "background": "#212121",
+            "black": "#21222C",
+            "blue": "#82AAFF",
+            "brightBlack": "#545454",
+            "brightBlue": "#D6ACFF",
+            "brightCyan": "#A4FFFF",
+            "brightGreen": "#69FF94",
+            "brightPurple": "#FF92DF",
+            "brightRed": "#FF6E6E",
+            "brightWhite": "#F8F8F2",
+            "brightYellow": "#FFCB6B",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#8BE9FD",
+            "foreground": "#F8F8F2",
+            "green": "#50FA7B",
+            "name": "DraculaPlus",
+            "purple": "#C792EA",
+            "red": "#FF5555",
+            "selectionBackground": "#FFFFFF",
+            "white": "#F8F8F2",
+            "yellow": "#FFCB6B"
+        },
+        {
+            "background": "#060606",
+            "black": "#000000",
+            "blue": "#2323A5",
+            "brightBlack": "#7B716E",
+            "brightBlue": "#4B4BFF",
+            "brightCyan": "#69FFFF",
+            "brightGreen": "#5FFF5F",
+            "brightPurple": "#FF54FF",
+            "brightRed": "#FF4141",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FFFF55",
+            "cursorColor": "#C8C1C1",
+            "cyan": "#42B0C8",
+            "foreground": "#C8C1C1",
+            "green": "#18B218",
+            "name": "Konsolas",
+            "purple": "#AD1EDC",
+            "red": "#AA1717",
+            "selectionBackground": "#060606",
+            "white": "#C8C1C1",
+            "yellow": "#EBAE1F"
+        }
+    ],
+    "theme": "dark",
+    "themes": [],
+    "windowingBehavior": "useAnyExisting"
+}

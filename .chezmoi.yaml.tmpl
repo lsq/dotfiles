@@ -1,0 +1,43 @@
+{{- /* 初始化 osid */ -}}
+{{- $osid := .chezmoi.os -}}
+{{- $destDir := .chezmoi.homeDir -}}
+
+{{- $msystem := env "MSYSTEM" | default "" -}}
+{{- $home := env "HOME" -}}
+
+{{- if eq .chezmoi.os "windows" -}}
+  {{- $destDir = (replace "\\" "/" .chezmoi.rawHomeDir) -}}
+  {{- /* 检查是否在 MSYS2/Git Bash 环境中 */ -}}
+
+  {{- if and ($msystem) (hasPrefix $home "/") -}}
+    {{- /* 真正的 MSYS2 环境：有 MSYSTEM 且 HOME 是 POSIX 路径 */ -}}
+    {{- $osid = "msys2" -}}
+  {{- else -}}
+    {{- /* 原生 Windows（PowerShell/CMD） */ -}}
+    {{- $osid = "windows-native" -}}
+  {{- end -}}
+{{- else if and (eq .chezmoi.os "linux") (contains "microsoft" .chezmoi.kernel.release) -}}
+  {{- $osid = "wsl" -}}
+{{- end -}}
+
+{{- $is_msys := false -}}
+{{- if and (eq .chezmoi.os "windows") (env "MSYSTEM") -}}
+{{-   $is_msys = true -}}
+{{- end -}}
+
+{{ if $is_msys }}
+interpreters:
+  sh:
+    command: "bash"
+  ps1:
+    command: "pwsh"
+    args: ["-NoLogo", "-File"]
+{{ end }}
+
+destDir: {{ $destDir | quote }}
+
+data:
+  destDir: {{ $destDir | quote }}
+  osid: {{ $osid | quote }}
+  msystem: {{ $msystem | quote }}
+  is_msys: {{ $is_msys }}

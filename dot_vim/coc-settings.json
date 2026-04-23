@@ -1,0 +1,134 @@
+{
+  "xml.java.home": "C:/Users/Administrator/scoop/apps/openjdk17/current",
+  // "yaml.execArgv": ["--nolazy", "--inspect=6045"],
+  "pyright.enable": false,
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.ruffEnabled": true,
+  // "prettier.resolveGlobalModules": true,
+  // "black-formatter.trace.server": "verbose",
+  "black-formatter.useGlobalCommand": true,
+  "ruff.disableDocumentFormatting": true,
+  "snippets.ultisnips.pythonPrompt": false,
+  "zig.enabled": true,
+  "zig.path": "zls",
+  "zig.startUpMessage": true,
+  "zig.debugLog": false,
+  // All nested settings will only affect Zig files.
+  "[zig]": {
+    // enable format-on-save from CoC + ZLS
+    //
+    // Formatting with ZLS matches `zig fmt`.
+    "coc.preferences.formatOnSave": true,
+
+    // Show inlay hints in the editor. Inlay hints are short annotations within the code,
+    // which show variable types or parameter names.
+    // "inlayHint.enable": true,
+
+    // Use the language server to perform code highlighting
+    "semanticTokens.enable": true
+  },
+  // "hell": {
+  //   "command": "C:/msys64/ucrt64/bin/python.exe",
+  //   "args": ["C:/msys64/home/Administrator/py/pygls/hello_pygls.py"],
+  //   "shell": true,
+  //   "filetypes": ["*"]
+  // },
+  "languageserver": {
+    "pyrefly": {
+      "command": "pyrefly",
+      "args": ["lsp"],
+      "filetypes": ["python"]
+      //"rootPatterns": ["pyrefly.toml", "pyproject.toml", ".git"],
+    },
+    "rubocop": {
+      // "command": "bundle",
+      // "args": ["exec", "rubocop", "--lsp"],
+      "command": "rubocop",
+      "shell": true,
+      "args": ["--lsp"],
+      "filetypes": ["ruby"]
+      // "rootPatterns": [".git", "Gemfile"],
+      // "requireRootPattern": true
+    },
+    "typeprof": {
+      "command": "typeprof",
+      "args": ["--lsp", "--stdio"],
+      "shell": true,
+      "filetypes": ["ruby"]
+    },
+    "steep": {
+      "command": "steep",
+      "shell": true,
+      "args": ["langserver"],
+      "filetypes": ["ruby"]
+    },
+    "ruby-lsp": {
+      "command": "ruby-lsp",
+      "shell": true,
+      "initializationOptions": {
+        "enabledFeatures": {
+          "codeActions": true,
+          "codeLens": true,
+          "completion": true,
+          "definition": true,
+          "diagnostics": true,
+          "documentHighlights": true,
+          "documentLink": true,
+          "documentSymbols": true,
+          "foldingRanges": true,
+          "formatting": true,
+          "hover": true,
+          "inlayHint": true,
+          "onTypeFormatting": true,
+          "selectionRanges": true,
+          "semanticHighlighting": true,
+          "signatureHelp": true,
+          "typeHierarchy": true,
+          "workspaceSymbol": true
+        }
+      },
+      "filetypes": ["ruby"],
+      "featuresConfiguration": {
+        "inlayHint": {
+          "implicitHashValue": true,
+          "implicitRescue": true
+        }
+      },
+      "indexing": {
+        "excludedPatterns": ["path/to/excluded/file.rb"],
+        "includedPatterns": ["path/to/included/file.rb"],
+        "excludedGems": ["gem1", "gem2", "etc."],
+        "excludedMagicComments": ["compiled:true"]
+      },
+      "formatter": "auto",
+      "linters": [],
+      "experimentalFeaturesEnabled": false
+    },
+    "config": {
+      "command": "autoconf-language-server",
+      "filetypes": ["config"]
+    },
+    "make": {
+      "command": "make-language-server",
+      "filetypes": ["make"]
+    },
+    "termux": {
+      "command": "termux-language-server",
+      "filetypes": ["sh"]
+    },
+    "efm": {
+      "command": "efm-langserver",
+      "args": ["-c", "${userHome}/.config/efm-langserver/config.yaml", "--logfile", "${userHome}/.config/efm-langserver/output.log"],
+      "filetypes": ["vim", "eruby", "markdown", "yaml", "sh"],
+      "initializationOptions": {
+        "documentFormatting": true,
+        "documentRangeFormatting": true,
+        "hover": true,
+        "documentSymbol": true,
+        "codeAction": true,
+        "completion": true
+      }
+    }
+  }
+}
